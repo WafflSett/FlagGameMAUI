@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tool="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             x:Class="FlagGame.Pages.GamePage"
+             Title="GamePage" Shell.BackgroundColor="{x:StaticResource Primary}" Shell.TitleColor="White" Shell.ForegroundColor="White" BackgroundColor="{x:StaticResource Gray600}">
+    <ContentPage.Behaviors>
+        <tool:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing"/>
+    </ContentPage.Behaviors>
+    <ScrollView>
+        <Grid RowDefinitions=".2*,.2*,1.5*,*,.5*" HeightRequest="760" Margin="10">
+            <Label FontAttributes="Bold" FontSize="30" Text="Guess the country" HorizontalOptions="Center"/>
+            <Label FontAttributes="Bold" Grid.Row="1" FontSize="30" Text="{Binding SecondsLeft}" HorizontalOptions="Start" VerticalOptions="End"/>
+            <Label FontAttributes="Bold" Grid.Row="1" FontSize="30" HorizontalOptions="End" VerticalOptions="End">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Score}"/>
+                        <Span Text=" / 10"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Border BackgroundColor="Black" Grid.Row="2" HeightRequest="200" VerticalOptions="Center" HorizontalOptions="Center" StrokeThickness="2">
+                <Image>
+                    <Image.Source>
+                        <UriImageSource Uri="{Binding CorrectAnswer.flagPng}"/>
+                    </Image.Source>
+                </Image>
+            </Border>
+            <Grid Grid.Row="3" ColumnDefinitions="*,*" RowDefinitions="*,*" Margin="5" RowSpacing="10" ColumnSpacing="10">
+                <Button Text="{Binding SelectedCountries[0].name}" Style="{x:StaticResource answerBtn}" Command="{Binding OptionClickedCommand}" CommandParameter="{x:Reference btn1}" x:Name="btn1"/>
+                <Button Text="{Binding SelectedCountries[1].name}" Grid.Column="1" Style="{x:StaticResource answerBtn}" Command="{Binding OptionClickedCommand}" CommandParameter="{x:Reference btn2}" x:Name="btn2"/>
+                <Button Text="{Binding SelectedCountries[2].name}" Grid.Row="1" Style="{x:StaticResource answerBtn}" Command="{Binding OptionClickedCommand}" CommandParameter="{x:Reference btn3}" x:Name="btn3"/>
+                <Button Text="{Binding SelectedCountries[3].name}" Grid.Row="1" Grid.Column="1" Style="{x:StaticResource answerBtn}" Command="{Binding OptionClickedCommand}" CommandParameter="{x:Reference btn4}" x:Name="btn4"/>
+            </Grid>
+            <Label Grid.Row="4" HorizontalOptions="Center" VerticalOptions="End">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Question}"/>
+                        <Span Text=" / 10"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+    </ScrollView>
+</ContentPage>

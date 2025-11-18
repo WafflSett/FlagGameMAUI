@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:FlagGame"
+             xmlns:pages="clr-namespace:FlagGame.Pages"
+             x:Class="FlagGame.Pages.MainPage" Shell.BackgroundColor="{x:StaticResource Primary}" Shell.ForegroundColor="White" Shell.TitleColor="White" BackgroundColor="{x:StaticResource Gray600}" Title="Flag quiz">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{x:StaticResource Primary}" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
+    
+    <ScrollView>
+        <Grid RowDefinitions=".5*,*,.5*,*,.5*, *, .5*" HeightRequest="750" ColumnDefinitions="*,*" Margin="10">
+            <Grid.Resources>
+                <Style TargetType="ImageButton">
+                    <Setter Property="WidthRequest" Value="175"/>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="HorizontalOptions" Value="Center"/>
+                </Style>
+            </Grid.Resources>
+            <Label Text="Select region" HorizontalOptions="Center" FontSize="30" FontAttributes="Bold" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <ImageButton Command="{Binding NavigateToGameCommand}" CommandParameter="Europe" Grid.Row="1" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Europe_orthographic_Caucasus_Urals_boundary_%28with_borders%29.svg/640px-Europe_orthographic_Caucasus_Urals_boundary_%28with_borders%29.svg.png"/>
+            <Label Text="Europe" Grid.Row="2" />
+            <ImageButton Command="{Binding NavigateToGameCommand}" CommandParameter="Americas" Grid.Row="1" Grid.Column="1" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Americas_%28orthographic_projection%29.svg/640px-Americas_%28orthographic_projection%29.svg.png"/>
+            <Label Grid.Row="2" Text="Americas" Grid.Column="1"/>
+            <ImageButton Command="{Binding NavigateToGameCommand}" CommandParameter="Asia" Grid.Row="3" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Asia_%28orthographic_projection%29.svg/640px-Asia_%28orthographic_projection%29.svg.png"/>
+            <ImageButton Command="{Binding NavigateToGameCommand}" CommandParameter="Africa" Grid.Row="3" Grid.Column="1" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Africa_%28orthographic_projection%29.svg/640px-Africa_%28orthographic_projection%29.svg.png"/>
+            <Label Text="Asia" Grid.Row="4"/>
+            <Label Text="Africa" Grid.Row="4" Grid.Column="1"/>
+            <ImageButton Command="{Binding NavigateToGameCommand}" CommandParameter="" Grid.Row="5" Grid.ColumnSpan="2" Source="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Perlshaper_orthographic_example1.svg/640px-Perlshaper_orthographic_example1.svg.png"/>
+            <Label Text="World" Grid.Row="6" Grid.ColumnSpan="2"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>
